@@ -43,7 +43,7 @@ class WXDLLIMPEXP_FWD_BASE wxCStrData;
 // unless wxDEBUG_LEVEL is predefined (by configure or via wx/setup.h under
 // Windows), use the default
 #if !defined(wxDEBUG_LEVEL)
-    #define wxDEBUG_LEVEL 1
+	#error debug level not defined
 #endif // !defined(wxDEBUG_LEVEL)
 
 /*

@@ -363,10 +363,10 @@ public:
     wxZipInputStream(wxInputStream& stream, wxMBConv& conv = wxConvLocal);
     wxZipInputStream(wxInputStream *stream, wxMBConv& conv = wxConvLocal);
 
-#if WXWIN_COMPATIBILITY_2_6 && wxUSE_FFILE
+//#if WXWIN_COMPATIBILITY_2_6 && wxUSE_FFILE
     wxZipInputStream(const wxString& archive, const wxString& file)
      : wxArchiveInputStream(OpenFile(archive), wxConvLocal) { Init(file); }
-#endif
+//#endif
 
     virtual WXZIPFIX ~wxZipInputStream();
 
@@ -384,9 +384,9 @@ protected:
     size_t WXZIPFIX OnSysRead(void *buffer, size_t size);
     wxFileOffset OnSysTell() const { return m_decomp ? m_decomp->TellI() : 0; }
 
-#if WXWIN_COMPATIBILITY_2_6
+//#if WXWIN_COMPATIBILITY_2_6
     wxFileOffset WXZIPFIX OnSysSeek(wxFileOffset seek, wxSeekMode mode);
-#endif
+//#endif
 
     // this protected interface isn't yet finalised
     virtual wxInputStream* WXZIPFIX OpenDecompressor(wxInputStream& stream);
@@ -395,9 +395,9 @@ protected:
 private:
     void Init();
     void Init(const wxString& file);
-#if WXWIN_COMPATIBILITY_2_6 && wxUSE_FFILE
+//#if WXWIN_COMPATIBILITY_2_6 && wxUSE_FFILE
     static wxInputStream *OpenFile(const wxString& archive);
-#endif
+//#endif
 
     wxArchiveEntry *DoGetNextEntry()    { return GetNextEntry(); }
 
@@ -441,10 +441,10 @@ private:
     friend bool wxZipOutputStream::CopyArchiveMetaData(
                     wxZipInputStream& inputStream);
 
-#if WXWIN_COMPATIBILITY_2_6
+//#if WXWIN_COMPATIBILITY_2_6
     bool m_allowSeeking;
     friend class wxArchiveFSHandler;
-#endif
+//#endif
 
     wxDECLARE_NO_COPY_CLASS(wxZipInputStream);
 };

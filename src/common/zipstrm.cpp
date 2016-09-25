@@ -1316,6 +1316,7 @@ wxZipInputStream::wxZipInputStream(wxInputStream& stream,
                                    wxMBConv& conv /*=wxConvLocal*/)
   : wxArchiveInputStream(stream, conv)
 {
+	m_allowSeeking = true;
     Init();
 }
 
@@ -1323,10 +1324,11 @@ wxZipInputStream::wxZipInputStream(wxInputStream *stream,
                                    wxMBConv& conv /*=wxConvLocal*/)
   : wxArchiveInputStream(stream, conv)
 {
+	m_allowSeeking = true;
     Init();
 }
 
-#if WXWIN_COMPATIBILITY_2_6 && wxUSE_FFILE
+//#if WXWIN_COMPATIBILITY_2_6 && wxUSE_FFILE
 
 // Part of the compatibility constructor, which has been made inline to
 // avoid a problem with it not being exported by mingw 3.2.3
@@ -1358,7 +1360,7 @@ wxInputStream* wxZipInputStream::OpenFile(const wxString& archive)
     return new wxFFileInputStream(archive);
 }
 
-#endif // WXWIN_COMPATIBILITY_2_6 && wxUSE_FFILE
+//#endif // WXWIN_COMPATIBILITY_2_6 && wxUSE_FFILE
 
 void wxZipInputStream::Init()
 {
@@ -1376,9 +1378,9 @@ void wxZipInputStream::Init()
     m_signature = 0;
     m_TotalEntries = 0;
     m_lasterror = m_parent_i_stream->GetLastError();
-#if WXWIN_COMPATIBILITY_2_6
-    m_allowSeeking = false;
-#endif
+//#if WXWIN_COMPATIBILITY_2_6
+    m_allowSeeking = true;
+//#endif
 }
 
 wxZipInputStream::~wxZipInputStream()
@@ -1893,7 +1895,7 @@ size_t wxZipInputStream::OnSysRead(void *buffer, size_t size)
     return count;
 }
 
-#if WXWIN_COMPATIBILITY_2_6
+//#if WXWIN_COMPATIBILITY_2_6
 
 // Borrowed from VS's zip stream (c) 1999 Vaclav Slavik
 //
@@ -1958,7 +1960,7 @@ wxFileOffset wxZipInputStream::OnSysSeek(wxFileOffset seek, wxSeekMode mode)
     return pos;
 }
 
-#endif // WXWIN_COMPATIBILITY_2_6
+//#endif // WXWIN_COMPATIBILITY_2_6
 
 
 /////////////////////////////////////////////////////////////////////////////

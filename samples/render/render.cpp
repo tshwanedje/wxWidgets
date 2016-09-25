@@ -28,6 +28,8 @@
     #include "wx/app.h"
     #include "wx/frame.h"
     #include "wx/dc.h"
+#include "wx/graphics.h"
+#include "wx/dcgraph.h"
     #include "wx/dcclient.h"
     #include "wx/panel.h"
     #include "wx/menu.h"
@@ -177,6 +179,8 @@ private:
     {
         wxPaintDC dc(this);
 
+		wxGCDC gdc(dc);
+
         wxRendererNative& renderer = wxRendererNative::Get();
 
         int x1 = 10,    // text offset
@@ -239,7 +243,7 @@ private:
         y += lineHeight + sizeCheck.y;
 
         dc.DrawText("DrawRadioBitmap()", x1, y);
-        renderer.DrawRadioBitmap(this, dc,
+        renderer.DrawRadioBitmap(this, gdc,
                                  wxRect(wxPoint(x2, y), sizeCheck), m_flags);
         y += lineHeight + sizeCheck.y;
 

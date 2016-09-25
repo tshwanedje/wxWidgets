@@ -623,8 +623,11 @@ public:
 
     // sets the brush for filling
     virtual void SetBrush( const wxGraphicsBrush& brush );
+   	wxGraphicsPen GetPen() { return m_pen; }
+	wxGraphicsBrush GetBrush(){ return m_brush; };
+	wxGraphicsFont GetFont() { return m_font; }
 
-    void SetBrush( const wxBrush& brush );
+	void SetBrush( const wxBrush& brush );
 
     // sets the font
     virtual void SetFont( const wxGraphicsFont& font );

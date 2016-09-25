@@ -1121,16 +1121,16 @@ bool wxWindowBase::HasScrollbar(int orient) const
 
 bool wxWindowBase::Show(bool show)
 {
-    if ( show != m_isShown )
-    {
+    //if ( show != m_isShown )
+    //{
         m_isShown = show;
 
         return true;
-    }
-    else
-    {
-        return false;
-    }
+    //}
+    //else
+    //{
+        //return false;
+    //}
 }
 
 bool wxWindowBase::IsEnabled() const

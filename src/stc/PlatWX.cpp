@@ -1583,7 +1583,7 @@ wxString stc2wx(const char* str)
 }
 
 
-wxWX2MBbuf wx2stc(const wxString& str)
+wxCharBuffer wx2stc(const wxString& str)
 {
     const wchar_t* wcstr = str.c_str();
     size_t wclen         = str.length();

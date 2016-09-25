@@ -807,6 +807,7 @@ void* wxProgressDialogTaskRunner::Entry()
         {
             tdc.pszExpandedInformation =
                 m_sharedData.m_expandedInformation.t_str();
+            tdc.dwFlags |= TDF_EXPANDED_BY_DEFAULT; // Expand details content area by default [DJ:2012-07-14]
         }
     }
 

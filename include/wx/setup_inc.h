@@ -65,7 +65,7 @@
 // #ifdef NDEBUG
 //  #define wxDEBUG_LEVEL 0
 // #else
-//  #define wxDEBUG_LEVEL 2
+  #define wxDEBUG_LEVEL 0
 // #endif
 
 // wxHandleFatalExceptions() may be used to catch the program faults at run
@@ -654,7 +654,7 @@
 //
 // Recommended setting: 1 if your compiler supports it, if it doesn't please
 // contribute us a makefile for src/regex for it
-#define wxUSE_REGEX       1
+#define wxUSE_REGEX       0
 
 // wxSystemOptions class
 #define wxUSE_SYSTEM_OPTIONS 1
@@ -717,7 +717,7 @@
 // Default is 1
 //
 // Recommended setting: 1
-#define wxUSE_WEBVIEW 1
+#define wxUSE_WEBVIEW 0
 
 // Use the IE wxWebView backend
 //

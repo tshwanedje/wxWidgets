@@ -2233,6 +2233,7 @@ public:
                 const wxString& name = wxSTCNameStr);
 
 
+    friend class wxDataViewStyledTextCtrlRenderer;
     //----------------------------------------------------------------------
     // Generated method declaration section {{{
 

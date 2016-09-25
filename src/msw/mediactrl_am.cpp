@@ -2238,16 +2238,21 @@ void wxAMMediaEvtHandler::OnActiveX(wxActiveXEvent& event)
 #endif
         if(event.ParamCount() >= 1)
         {
-            if(event[0].GetInteger() == 0)
+            long eventParam = event[0].GetInteger(); // NGP to see value
+            if(eventParam == 0)
             {
-                m_bLoadEventSent = false;
+                // Uninitialised state. Prevent any event being
+                // sent without going through the loading state
+                m_bLoadEventSent = true;
             }
-            // Originally this was >= 3 here but on 3 we can't get the
-            // size of the video (will error) - however on 4
-            // it won't play on downloaded things until it is
-            // completely downloaded so we use the lesser of two evils...
-            else if(event[0].GetInteger() == 3 &&
-                !m_bLoadEventSent)
+            else if (eventParam == 1)
+            {
+                // Loading state. Allow finish load to be sent
+                // if either interactive (3) or complete (4) state
+                // is reached.
+                 m_bLoadEventSent = false;
+             }
+            else if(eventParam >= 3 && !m_bLoadEventSent)
             {
                 m_bLoadEventSent = true;
                 m_amb->FinishLoad();

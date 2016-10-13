@@ -4101,6 +4101,8 @@ public:
         ReplaceTarget(text);
     }
 
+    // Allow derived classes to potentially customize clipboard copy operation (i.e. give derived classes the opportunity to modify the text immediately prior to it being actually copied to the clipboard).
+    virtual void OnCopyToClipboard(wxString& WXUNUSED(sText));
     /*
         These functions are already declared in the generated section.
 

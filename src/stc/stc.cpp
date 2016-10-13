@@ -2893,6 +2893,10 @@ void wxStyledTextCtrl::CopyText(int length, const wxString& text)
     SendMsg(2420, length, (sptr_t)(const char*)wx2stc(text));
 }
 
+void wxStyledTextCtrl::OnCopyToClipboard(wxString& WXUNUSED(sText))
+{
+}
+
 // Set the selection mode to stream (SC_SEL_STREAM) or rectangular (SC_SEL_RECTANGLE/SC_SEL_THIN) or
 // by lines (SC_SEL_LINES).
 void wxStyledTextCtrl::SetSelectionMode(int mode)

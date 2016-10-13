@@ -530,6 +530,9 @@ void ScintillaWX::CopyToClipboard(const SelectionText& st) {
     wxTheClipboard->UsePrimarySelection(false);
     if (wxTheClipboard->Open()) {
         wxString text = wxTextBuffer::Translate(stc2wx(st.s, st.len-1));
+        // Allow derived classes to potentially customize clipboard copy operation (i.e. give derived classes the opportunity to modify the text immediately prior to it being actually copied to the clipboard). [David Joffe 2016-10]
+        if (stc)
+            stc->OnCopyToClipboard(text);
         wxTheClipboard->SetData(new wxTextDataObject(text));
         wxTheClipboard->Close();
     }
